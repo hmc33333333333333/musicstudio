@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-rvz)a_yg9q5swx!521ikz1)&_d$v*4&(wruo1obff6nr0t8jh)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -121,19 +121,22 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 
-# In development, STATICFILES_DIRS points to the folder containing the static files (like "static")
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),  # Folder where you store your static assets
-]
+# # In development, STATICFILES_DIRS points to the folder containing the static files (like "static")
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"),  # Folder where you store your static assets
+# ]
 
-# STATIC_ROOT is used to collect all static files when you run collectstatic (for production)
-# STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+# print(os.path.join(BASE_DIR, 'static/'))
+# print(os.path.dirname(os.path.realpath(__file__)))
 
-# print([os.path.join(BASE_DIR, '/static')])
-print(os.path.join(BASE_DIR/'static/'))
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 
+print(STATICFILES_DIRS)
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
